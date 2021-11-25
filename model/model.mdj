@@ -711,6 +711,23 @@
 										},
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAF9V+63qU0jxng=",
+											"_parent": {
+												"$ref": "AAAAAAF9M9At2gkCVZg="
+											},
+											"model": {
+												"$ref": "AAAAAAF9V+63mk0g/90="
+											},
+											"font": "Arial;13;0",
+											"left": 533,
+											"top": 204,
+											"width": 235.9677734375,
+											"height": 13,
+											"text": "+calcDefinitive(Student): float",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAF9TXjz9bBeM0k=",
 											"_parent": {
 												"$ref": "AAAAAAF9M9At2gkCVZg="
@@ -720,7 +737,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 533,
-											"top": 204,
+											"top": 219,
 											"width": 235.9677734375,
 											"height": 13,
 											"text": "+calcAverage(): float",
@@ -737,7 +754,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 533,
-											"top": 219,
+											"top": 234,
 											"width": 235.9677734375,
 											"height": 13,
 											"text": "+toString(): String",
@@ -748,7 +765,7 @@
 									"left": 528,
 									"top": 79,
 									"width": 245.9677734375,
-									"height": 158
+									"height": 173
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -788,7 +805,7 @@
 							"left": 528,
 							"top": 16,
 							"width": 245.9677734375,
-							"height": 221,
+							"height": 236,
 							"nameCompartment": {
 								"$ref": "AAAAAAF9M9At2Qj837s="
 							},
@@ -2497,6 +2514,34 @@
 										"$ref": "AAAAAAF9M+jm2htnM60="
 									},
 									"type": "ArrayList<Inscription>",
+									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF9V+63mk0g/90=",
+							"_parent": {
+								"$ref": "AAAAAAF9M9At2Qj5ZoY="
+							},
+							"name": "calcDefinitive",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF9V+8TyU1FW70=",
+									"_parent": {
+										"$ref": "AAAAAAF9V+63mk0g/90="
+									},
+									"name": "Student",
+									"type": ""
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF9V+8TyU1GKvA=",
+									"_parent": {
+										"$ref": "AAAAAAF9V+63mk0g/90="
+									},
+									"type": "float",
 									"direction": "return"
 								}
 							]

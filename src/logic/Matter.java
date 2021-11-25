@@ -30,11 +30,17 @@ public class Matter {
         this.credits = credits;
     }
 
-    public void addInscription(){
-
+    public void addInscription(Student student){
+        inscriptions.add( new Inscription( student, this ) );
     }
 
     public boolean addGrade( Student student, float grade, float percent ){
+
+        for( Inscription inscription : inscriptions ){
+            if ( inscription.getStudent() == student ){
+                return inscription.addGrade( inscription.new Grade( grade, percent));
+            }
+        }
 
         return false;
     }
@@ -43,9 +49,23 @@ public class Matter {
         return (ArrayList<Inscription>) inscriptions.clone();
     }
 
-    public float calcAverage(){
+    public float calcDefinitive( Student student ){
+        for( Inscription inscription : inscriptions ){
+            if ( inscription.getStudent() == student ){
+                return inscription.calcDefinitive();
+            }
+        }
 
         return 0.0f;
+    }
+
+    public float calcAverage(){
+        float avg = 0.0f;
+        for( Inscription inscription : inscriptions ){
+            avg += inscription.calcDefinitive();
+        }
+
+        return avg / inscriptions.size();
     }
 
     @Override

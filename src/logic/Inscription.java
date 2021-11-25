@@ -63,6 +63,19 @@ public class Inscription {
         return sum;
     }
 
+    public String getCualification(){
+
+        float definitive = calcDefinitive();
+        if( definitive >= 0 && definitive <= 2 )
+            return "INSUFICIENTE";
+        else if( definitive > 2 && definitive < 3 )
+            return "NO APROBADO";
+        else if( definitive >= 3 && definitive < 4 )
+            return "APROBADO";
+        else
+            return "EXCELENTE";
+    }
+
     public class Grade{
         private float grade;
         private float percent;

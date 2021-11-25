@@ -50,4 +50,18 @@ class InscriptionTest {
         inscription.addGrade( grade1 );
         assertEquals(100.0,inscription.getSumPercents());
     }
+
+    @Test
+    void getCualification(){
+        setup();
+        Inscription.Grade grade1 = inscription.new Grade(4.0f,30f);
+        Inscription.Grade grade2 = inscription.new Grade(3.5f,40f);
+        Inscription.Grade grade3 = inscription.new Grade(5.0f,30f);
+        inscription.addGrade( grade1 );
+        assertEquals("INSUFICIENTE",inscription.getCualification());
+        inscription.addGrade( grade2 );
+        assertEquals("NO APROBADO",inscription.getCualification());
+        inscription.addGrade( grade3 );
+        assertEquals("EXCELENTE",inscription.getCualification());
+    }
 }
