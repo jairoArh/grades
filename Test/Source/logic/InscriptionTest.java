@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InscriptionTest {
-
     private Inscription inscription;
 
     private void setup(){
@@ -64,4 +63,5 @@ class InscriptionTest {
         inscription.addGrade( grade3 );
         assertEquals("EXCELENTE",inscription.getCualification());
     }
+
 }

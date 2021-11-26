@@ -30,7 +30,7 @@ public class Student {
     }
 
     public void addInscription( Matter matter){
-
+        inscriptions.add(new Inscription(this, matter));
     }
 
     public ArrayList<Inscription> getInscriptions() {
@@ -38,21 +38,31 @@ public class Student {
     }
 
     public boolean addGrade(Matter matter, float grade, float percent ){
-
+        for( Inscription inscription : inscriptions ){
+            if ( inscription.getMatter() == matter ){
+                return inscription.addGrade( inscription.new Grade( grade, percent));
+            }
+        }
         return false;
     }
 
     public float calcDefinitive( Matter matter ){
-
+        for( Inscription inscription : inscriptions ){
+            if ( inscription.getMatter() == matter ){
+                return inscription.calcDefinitive();
+            }
+        }
         return 0.0f;
     }
 
     public float calcAverage(){
-
-        return 0.0f;
+        float avg = 0.0f;
+        for( Inscription inscription : inscriptions ){
+            avg += inscription.calcDefinitive();
+        }
+        return avg / inscriptions.size();
     }
 
-    @Override
     public String toString() {
         return "Student{" +
                 "code='" + code + '\'' +
