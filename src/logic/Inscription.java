@@ -101,7 +101,6 @@ public class Inscription {
             this.percent = percent;
         }
 
-        @Override
         public String toString() {
             return "Grade{" +
                     "grade=" + grade +

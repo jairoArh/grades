@@ -68,7 +68,6 @@ public class Matter {
         return avg / inscriptions.size();
     }
 
-    @Override
     public String toString() {
         return "Matter{" +
                 "description='" + description + '\'' +
