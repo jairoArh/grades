@@ -64,8 +64,8 @@ public class Matter {
         for( Inscription inscription : inscriptions ){
             avg += inscription.calcDefinitive();
         }
-
-        return avg / inscriptions.size();
+        avg = avg / inscriptions.size();
+        return Math.round(avg * 10.0f)/10.0f;
     }
 
     public String toString() {

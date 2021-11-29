@@ -13,5 +13,7 @@ public class Runner {
         for( int num : nums ){
             System.out.printf("%d\t",num);
         }
+        float definitive = 3.4456656f;
+        System.out.println(Math.round(definitive*10.0f)/10.0f);
     }
 }

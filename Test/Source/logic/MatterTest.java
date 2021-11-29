@@ -41,7 +41,7 @@ class MatterTest {
         matter.addGrade(mateo,1.5f,20f); //0.3
         assertEquals(2.2,matter.calcDefinitive( mateo ),0.1);
 
-        assertEquals(2.85,matter.calcAverage(),0.1);
+        assertEquals(2.85,matter.calcAverage(), 0.1);
     }
 
     @Test

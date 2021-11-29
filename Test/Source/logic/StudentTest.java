@@ -34,8 +34,8 @@ class StudentTest {
         student.addGrade(math, 3.2f, 30f);
         student.addGrade(physic, 3.0f, 50f);
         student.addGrade(physic, 2.8f, 20f);
-        assertEquals(3.4, student.calcDefinitive(math), 0.1);
-        assertEquals(2.0, student.calcDefinitive(physic), 0.1);
+        assertEquals(3.5, student.calcDefinitive(math), 0.1);
+        assertEquals(2.1, student.calcDefinitive(physic), 0.1);
 
     }
 

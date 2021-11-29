@@ -51,7 +51,7 @@ public class Inscription {
             definitive += grade.getGrade() * ( grade.getPercent() / 100 );
         }
 
-        return definitive;
+        return Math.round(definitive*10.0f)/10.0f;
     }
 
     public float getSumPercents(){
