@@ -3,12 +3,14 @@ package logic;
 import java.util.ArrayList;
 
 public class Matter {
+    private String code;
     private String description;
     private byte credits;
     private ArrayList<Inscription> inscriptions;
 
 
-    public Matter(String description, byte credits) {
+    public Matter(String code, String description, byte credits) {
+        this.code = code;
         this.description = description;
         this.credits = credits;
         inscriptions = new ArrayList<>();
@@ -28,6 +30,14 @@ public class Matter {
 
     public void setCredits(byte credits) {
         this.credits = credits;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public void addInscription(Student student){

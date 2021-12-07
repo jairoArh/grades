@@ -9,7 +9,7 @@ class InscriptionTest {
     private Inscription inscription;
 
     private void setup(){
-        inscription = new Inscription(new Student("3453","Jhon Alexander"),new Matter("Calculo I",(byte)4));
+        inscription = new Inscription(new Student("3453","Jhon Alexander"),new Matter("323424","Calculo I",(byte)4));
     }
 
     @Test

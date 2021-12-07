@@ -13,10 +13,10 @@ class StudentTest {
 
     void setup(){
         lina = new Student("201332464","Lina María Barrera");
-        calc1 = new Matter("Calculo I",(byte)4);
-        progra2 = new Matter("Programación II",(byte)4);
-        bd = new Matter("Bases de Dtos",(byte)3);
-        net = new Matter("Redes",(byte)3);
+        calc1 = new Matter("232342","Calculo I",(byte)4);
+        progra2 = new Matter("356465","Programación II",(byte)4);
+        bd = new Matter("456344","Bases de Dtos",(byte)3);
+        net = new Matter("754565","Redes",(byte)3);
 
         lina.addInscription(calc1);
         lina.addInscription(progra2);
