@@ -63,22 +63,28 @@ public class ManagementGrades {
 
     public boolean addGrade( Student student, Matter matter, float grade, float percent ){
 
-        return false;
+        return student.addGrade( matter,grade,percent) && matter.addGrade(student,grade,percent);
     }
 
     public float calcDefinitive(Student student, Matter matter){
 
-        return 0.0f;
+        return student.calcDefinitive( matter );
+
+    }
+
+    public float calcDefinitive(Matter matter, Student student ){
+
+        return matter.calcDefinitive( student );
     }
 
     public float calcAvg(Student student){
 
-        return 0.0f;
+        return student.calcAverage();
     }
 
     public float calcAvg(Matter matter){
 
-        return 0.0f;
+        return matter.calcAverage();
     }
 
     public ArrayList<Student> getStudents() {
