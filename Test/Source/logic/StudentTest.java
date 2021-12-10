@@ -9,8 +9,8 @@ class StudentTest {
     Matter physic;
     Student student;
     public void setup() {
-        math = new Matter("Calculo I", (byte) 4);
-        physic = new Matter("Física I", (byte) 4);
+        math = new Matter("8745984","Calculo I", (byte) 4);
+        physic = new Matter("87654875","Física I", (byte) 4);
         student = new Student("72489", "Daniel Guerra");
         student.addInscription(math);
         student.addInscription(physic);

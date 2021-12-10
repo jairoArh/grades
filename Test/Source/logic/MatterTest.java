@@ -10,7 +10,7 @@ class MatterTest {
     private Student mateo;
 
     private void setup(){
-        matter = new Matter("Calculo I",(byte)4);
+        matter = new Matter("673874","Calculo I",(byte)4);
         lola = new Student("4563563","Dolores Diaz");
         mateo =  new Student("8374462","Mateo Suárez");
         matter.addInscription( lola );

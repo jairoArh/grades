@@ -5,106 +5,110 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManagementGradesTest {
-    ManagementGrades managementGrades;
-    Student daniel;
-    Student alejandro;
-    Matter calc;
-    Matter progra;
-    Matter baseData;
+    private ManagementGrades grades;
 
-    public void setup() {
-        daniel = new Student("202021543", "Daniel Guerra");
-        alejandro = new Student("234235253", "Alejandro Muñoz");
-        calc = new Matter("Calculo I", (byte)4);
-        progra = new Matter("Programación II", (byte)4);
-        baseData = new Matter("Bases de datos", (byte)3);
-        managementGrades = new ManagementGrades();
-        managementGrades.addInscription(daniel, calc);
-        managementGrades.addInscription(daniel, progra);
-        managementGrades.addInscription(daniel, baseData);
-        managementGrades.addInscription(alejandro, calc);
-        managementGrades.addInscription(alejandro, progra);
-        managementGrades.addInscription(alejandro, baseData);
+    void setup(){
+        grades = new ManagementGrades();
+        grades.addStudent( new Student("20102410","Martha Ines López"));
+        grades.addStudent( new Student("20130932","Claudia Marcela Rios"));
+        grades.addStudent( new Student("20141054","Luis Antonio Perez"));
+
+        grades.addMatter( new Matter("8108321","Calculo I",(byte)4));
+        grades.addMatter( new Matter("8108255","Programación I",(byte)4));
+        grades.addMatter( new Matter("8108256","Programación II",(byte)4));
+        grades.addMatter( new Matter("8108257","Programación III",(byte)4));
+        grades.addMatter( new Matter("8108265","Bases de Datos",(byte)3));
+        grades.addMatter( new Matter("8108453","Catedra Universidad y Entorno",(byte)2));
+
+        //Inscripciones para Martha Ines Lopez
+        grades.addInscription( grades.findStudent("20102410"),grades.findMatter("8108321"));
+        grades.addInscription( grades.findStudent("20102410"),grades.findMatter("8108256"));
+        grades.addInscription( grades.findStudent("20102410"),grades.findMatter("8108265"));
+
+        //Inscripciones para Claudia Marcela
+        grades.addInscription( grades.findStudent("20130932"),grades.findMatter("8108321"));
+        grades.addInscription( grades.findStudent("20130932"),grades.findMatter("8108256"));
+        grades.addInscription( grades.findStudent("20130932"),grades.findMatter("8108265"));
+        grades.addInscription( grades.findStudent("20130932"),grades.findMatter("8108453"));
+
+        //Inscripciones para Luis Antonio Perez
+        grades.addInscription( grades.findStudent("20141054"),grades.findMatter("8108321"));
+        grades.addInscription( grades.findStudent("20141054"),grades.findMatter("8108257"));
+        grades.addInscription( grades.findStudent("20141054"),grades.findMatter("8108265"));
+        grades.addInscription( grades.findStudent("20141054"),grades.findMatter("8108453"));
 
     }
 
-    public void setupTwo(){
+    @Test
+    void findStudent() {
         setup();
-        managementGrades.addGrade(daniel, calc, 3.3f, 30f);
-        managementGrades.addGrade(daniel, calc, 4.1f, 40f);
-        managementGrades.addGrade(daniel, calc, 2.5f, 30f);
+        assertNull( grades.findStudent("45244"));
+        assertNotNull(grades.findStudent("20141054"));
+        assertEquals("Luis Antonio Perez",grades.findStudent("20141054").getName());
+        assertNotNull(grades.findStudent("20102410"));
+        assertNotNull(grades.findStudent("20130932"));
+    }
 
-        managementGrades.addGrade(daniel, progra, 3.7f, 10f);
-        managementGrades.addGrade(daniel, progra, 3.6f, 50);
-        managementGrades.addGrade(daniel, progra, 1.1f, 25f);
-        managementGrades.addGrade(daniel, progra, 4.1f, 15f);
+    @Test
+    void addStudent(){
+        setup();
+        assertFalse(grades.addStudent(new Student("20102410","Martha Ines López")));
+        assertFalse(grades.addStudent(new Student("20130932","Claudia Marcela Rios")));
+        assertTrue(grades.addStudent( new Student("5436466","Lola")));
+        assertEquals(4, grades.getStudents().size());
+    }
 
-        managementGrades.addGrade(daniel, baseData, 2.5f, 60);
-        managementGrades.addGrade(daniel, baseData, 4.5f, 40f);
+    @Test
+    void addMatter(){
+        setup();
+        assertTrue(grades.addMatter( new Matter("3434534","Redes de Datos",(byte)3)));
+        assertFalse(grades.addMatter( new Matter("8108321","Calculo I",(byte)4)));
+        assertTrue(grades.addMatter( new Matter("5353434","Algrebra Lineal",(byte)4)));
+        assertFalse(grades.addMatter( new Matter("8108453","Catedra Universidad y Entorno",(byte)2)));
+        assertEquals(8,grades.getMatters().size());
+    }
 
-        managementGrades.addGrade(alejandro, progra, 3.2f, 20f);
-        managementGrades.addGrade(alejandro, progra, 2.6f, 35);
-        managementGrades.addGrade(alejandro, progra, 1.8f, 25f);
-        managementGrades.addGrade(alejandro, progra, 3.7f, 20f);
+    @Test
+    void findMatter() {
+        setup();
+        assertNull(grades.findMatter("645734646"));
+        assertNotNull(grades.findMatter("8108321"));
+        assertNotNull(grades.findMatter("8108255"));
+        assertNotNull(grades.findMatter("8108256"));
+        assertEquals("Programación II",grades.findMatter("8108256").getDescription());
+    }
 
-        managementGrades.addGrade(alejandro, calc, 3.7f, 40f);
-        managementGrades.addGrade(alejandro, calc, 3.6f, 30f);
-        managementGrades.addGrade(alejandro, calc, 1.1f, 30f);
+    @Test
+    void inscriptions(){
+        setup();
+        //Probar las inscripciones que tiene cada estudiante
+        assertEquals(3,grades.findStudent("20102410").getInscriptions().size());
+        assertEquals(4,grades.findStudent("20130932").getInscriptions().size());
+        assertEquals(4,grades.findStudent("20141054").getInscriptions().size());
 
-        managementGrades.addGrade(alejandro, baseData, 3.9f, 31f);
-        managementGrades.addGrade(alejandro, baseData, 4.6f, 34f);
-        managementGrades.addGrade(alejandro, baseData, 2.1f, 5f);
-        managementGrades.addGrade(alejandro, baseData, 4.5f, 30f);
-
+        //Probar las inscripciones que tiene cada materia
+        assertEquals(3,grades.findMatter("8108321").getInscriptions().size());
+        assertEquals(2,grades.findMatter("8108256").getInscriptions().size());
+        assertEquals(3,grades.findMatter("8108265").getInscriptions().size());
+        assertEquals(2,grades.findMatter("8108453").getInscriptions().size());
+        assertEquals(1,grades.findMatter("8108257").getInscriptions().size());
     }
 
     @Test
     void addGrade() {
         setup();
-        assertTrue(managementGrades.addGrade(daniel, calc, 3.3f, 30f));
-        assertTrue(managementGrades.addGrade(daniel, calc, 4.1f, 40f));
-        assertTrue(managementGrades.addGrade(daniel, calc, 2.5f, 30f));
-        assertFalse(managementGrades.addGrade(daniel, calc, 2.5f, 0.30f));
-
-        assertTrue(managementGrades.addGrade(daniel, progra, 3.7f, 10f));
-        assertTrue(managementGrades.addGrade(daniel, progra, 3.6f, 50));
-        assertTrue(managementGrades.addGrade(daniel, progra, 1.1f, 25f));
-        assertTrue(managementGrades.addGrade(daniel, progra, 4.1f, 15f));
-        assertFalse(managementGrades.addGrade(daniel, progra, 4.1f, 0.3f));
-
-        assertTrue(managementGrades.addGrade(alejandro, progra, 3.2f, 20f));
-        assertTrue(managementGrades.addGrade(alejandro, progra, 2.6f, 35));
-        assertTrue(managementGrades.addGrade(alejandro, progra, 1.8f, 25f));
-        assertTrue(managementGrades.addGrade(alejandro, progra, 3.7f, 20f));
-        assertFalse(managementGrades.addGrade(alejandro, progra, 3.7f, 20f));
-        assertFalse(managementGrades.addGrade(alejandro, progra, 3.7f, 20f));
-    }
-
-    @Test
-    void calcDefinitve() {
-        setupTwo();
-        assertEquals(3.4f,managementGrades.calcDefinitve(daniel, calc));
-        assertEquals(3.1f, managementGrades.calcDefinitve(daniel, progra));
-        assertEquals(3.3f, managementGrades.calcDefinitve(daniel, baseData));
-
-        assertEquals(2.7f, managementGrades.calcDefinitve(alejandro, progra));
-        assertEquals(2.9f, managementGrades.calcDefinitve(alejandro, calc));
-        assertEquals(4.2f, managementGrades.calcDefinitve(alejandro, baseData));
-    }
-
-    @Test
-    void calcAverageStudent() {
-        setupTwo();
-        assertEquals(3.3f, managementGrades.calcAverageStudent(daniel));
-        assertEquals(3.3f, managementGrades.calcAverageStudent(alejandro));
 
     }
 
     @Test
-    void calcAverageMatter() {
-        setupTwo();
-        assertEquals(3.2f, managementGrades.calcAverageMatter(calc));
-        assertEquals(2.9f, managementGrades.calcAverageMatter(progra));
-        assertEquals(3.8f, managementGrades.calcAverageMatter(baseData));
+    void calcDefinitive() {
+    }
+
+    @Test
+    void calcAvg() {
+    }
+
+    @Test
+    void testCalcAvg() {
     }
 }
